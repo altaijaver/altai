@@ -368,6 +368,11 @@
         .modal-dialog {
             margin-top: 80px;
         }
+
+        select,
+        .nice-select {
+            display: none;
+        }
     </style>
 </head>
 
@@ -2935,38 +2940,50 @@ SLIDER AREA END -->
                     <div class="modal-body">
                         <div class="ltn__quick-view-modal-inner">
                             <div class="modal-product-item">
+
+
                                 <div class="row">
 
-                                    <form action="#">
+                                    <form id="lead-form">
+                                        <input type="hidden" name="oid" value="00Do0000000b6Io">
+                                        <input type="hidden" name="captcha_settings"
+                                            value='{"keyname":"CAPCHA_GENERICO2025","fallback":"true","orgId":"00Do0000000b6Io","ts":""}'>
+
                                         <h1>Déjanos tu mensaje</h1>
                                         <h6>Un asesor se pondrá en contacto a la brevedad.</h6>
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="input-item input-item-name ltn__custom-icon">
-                                                    <input type="text" name="name" placeholder="Nombre">
+                                                    <input id="first_name" type="text" name="first_name"
+                                                        placeholder="Nombre">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="input-item input-item-name ltn__custom-icon">
-                                                    <input type="text" name="apellidoPaterno"
-                                                        placeholder="Apellido Paterno">
+                                                    <input type="text" maxlength="40" id="middle_name"
+                                                        name="middle_name" placeholder="Apellido Materno">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="input-item input-item-name ltn__custom-icon">
-                                                    <input type="text" name="apellidoMaterno"
+                                                    <input id="last_name" name="last_name" type="text" required
                                                         placeholder="Apellido Materno">
+
+                                                    <!-- <input id="last_name" name="last_name" type="text" required> -->
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="input-item input-item-email ltn__custom-icon">
-                                                    <input type="email" name="email" placeholder="Email">
+                                                    <input id="email" name="email" type="email" placeholder="Email">
+                                                    <!-- <input id="email" name="email" type="email" required><br> -->
                                                 </div>
 
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="input-item input-item-phone ltn__custom-icon">
-                                                    <input type="text" name="phone" placeholder="Teléfono">
+                                                    <input id="phone" name="phone" type="text" required
+                                                        placeholder="Teléfono">
+                                                    <!-- <input id="phone" name="phone" type="text" required><br> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -2978,6 +2995,19 @@ SLIDER AREA END -->
                                                 Acepto Políticas de Privacidad
                                             </label>
                                         </div>
+
+                                        <input type="hidden" name="00N3l00000Q7A54" value="ALTAI">
+                                        <select type="hidden" id="00N3l00000Q7A4n" name="00N3l00000Q7A4n"
+                                            title="Canal de Venta">
+                                            <option selected value="Medios Digitales">Medios Digitales</option>
+                                        </select>
+
+                                        <select type="hidden" id="00N3l00000Q7A5S" name="00N3l00000Q7A5S"
+                                            title="Subcanal de Venta">
+                                            <option selected value="Micrositios">Micrositios</option>
+                                        </select>
+                                        <input type="hidden" name="00N3l00000Q7A57" value="Landing_QuintanaRoo">
+                                        <input type="hidden" name="00N3l00000Q7A4k" value="Información">
 
                                         <div class="mt-4">
                                             <div class="g-recaptcha"
