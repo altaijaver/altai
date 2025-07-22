@@ -3296,6 +3296,72 @@ SLIDER AREA END -->
         });
     </script>
 
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+
+        document.getElementById('lead-form').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const form = e.target;
+
+            // Obtener token reCAPTCHA
+            const token = grecaptcha.getResponse();
+            if (!token) {
+                alert('Por favor, completa el reCAPTCHA');
+                return;
+            }
+
+            // Obtener estado actual del checkbox "aviso"
+            const aviso = document.getElementById('aviso').checked;
+
+            // Construir payload JSON para enviar al backend
+            const data = {
+                oid: form.oid.value,
+                first_name: form.first_name.value,
+                last_name: form.last_name.value,
+                phone: form.phone.value,
+                email: form.email.value,
+                aviso,
+                '00N3l00000Q7A54': form['00N3l00000Q7A54'].value,
+                '00N3l00000Q7A57': form['00N3l00000Q7A57'].value,
+                '00N3l00000Q7A4k': form['00N3l00000Q7A4k'].value,
+                'g-recaptcha-response': token,
+            };
+
+            try {
+                const response = await fetch('https://backend-altai.netlify.app/.netlify/functions/enviarYDescargar', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data),
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    // Abrir PDF en pestaña nueva
+                    window.open(result.pdfUrl, '_blank');
+
+                    // Descargar PDF automáticamente
+                    const a = document.createElement('a');
+                    a.href = result.pdfUrl;
+                    a.download = 'brochure-javer.pdf';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+
+                    form.reset();
+                    grecaptcha.reset();
+                } else {
+                    alert(result.error || 'Error al enviar el formulario');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Ocurrió un error inesperado.');
+            }
+        });
+    </script>
+
 </body>
 
 </html>
