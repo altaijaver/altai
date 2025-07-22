@@ -3009,10 +3009,11 @@ SLIDER AREA END -->
                                         <input type="hidden" name="00N3l00000Q7A57" value="Landing_QuintanaRoo">
                                         <input type="hidden" name="00N3l00000Q7A4k" value="Información">
 
-                                        <div class="mt-4">
+                                        <!-- <div class="mt-4">
                                             <div class="g-recaptcha"
                                                 data-sitekey="6LeYyF4rAAAAAHybD_FuW3g0NiJJwUX7_VnfiJLv"></div><br>
-                                        </div>
+                                        </div> -->
+                                        <div id="recaptcha-1"></div>
 
                                         <div class="btn-wrapper mt-0">
                                             <button class="btn theme-btn-1 btn-effect-1 text-uppercase w-100"
@@ -3297,14 +3298,24 @@ SLIDER AREA END -->
     </script>
 
 
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onLoadRecaptcha&render=explicit" async defer></script>
     <script>
+        let recaptchaWidgetId;
+
+        function onLoadRecaptcha() {
+            // Renderiza reCAPTCHA explícitamente en el div "recaptcha-1"
+            recaptchaWidgetId = grecaptcha.render('recaptcha-1', {
+                'sitekey': '6LeYyF4rAAAAAHybD_FuW3g0NiJJwUX7_VnfiJLv'
+            });
+        }
+
+
         document.getElementById('lead-form').addEventListener('submit', async function (e) {
             e.preventDefault();
 
             const form = e.target;
 
-            const recaptchaToken = grecaptcha.getResponse();
+            const recaptchaToken = grecaptcha.getResponse(recaptchaWidgetId);
             if (!recaptchaToken) {
                 alert('Por favor, completa el reCAPTCHA');
                 return;
@@ -3347,7 +3358,7 @@ SLIDER AREA END -->
                 console.error('Error al enviar el formulario:', error);
                 alert('Error de red o del servidor.');
             } finally {
-                grecaptcha.reset(); // reinicia el captcha
+                grecaptcha.reset(recaptchaWidgetId); // reinicia el captcha
             }
         });
     </script>
