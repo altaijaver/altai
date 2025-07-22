@@ -3372,12 +3372,18 @@ SLIDER AREA END -->
                 a.remove();
                 window.URL.revokeObjectURL(url);
 
+                // Mostrar mensaje de éxito antes de redirigir
+                messageDiv.style.color = 'green';
+                messageDiv.textContent = 'Formulario enviado correctamente. Descargando brochure...';
+
                 // Limpiar form y reset reCAPTCHA
                 form.reset();
                 grecaptcha.reset(recaptchaWidgetId);
 
-                messageDiv.style.color = 'green';
-                messageDiv.textContent = 'Formulario enviado correctamente. Descargando brochure...';
+                // Esperar un momento (ej. 1.5 segundos) para que el usuario vea el mensaje, luego redirigir
+                setTimeout(() => {
+                    window.location.href = 'https://tudestino.com'; // Cambia aquí a la URL donde quieras redirigir
+                }, 1500);
 
             } catch (error) {
                 console.error('Error:', error);
@@ -3385,6 +3391,7 @@ SLIDER AREA END -->
                 messageDiv.textContent = 'Error de red o del servidor.';
             }
         });
+
     </script>
 
 
