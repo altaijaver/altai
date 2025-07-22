@@ -3359,17 +3359,25 @@ SLIDER AREA END -->
                     return;
                 }
 
-                const result = await response.json();
+                // Recibimos el PDF como blob
+                const pdfBlob = await response.blob();
 
-                // Abrir PDF en nueva pestaña (compatible y sencillo)
-                window.open(result.pdfUrl, '_blank');
+                // Forzar la descarga del PDF
+                const url = window.URL.createObjectURL(pdfBlob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'brochure.pdf'; // Nombre del archivo descargado
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                window.URL.revokeObjectURL(url);
 
                 // Limpiar form y reset reCAPTCHA
                 form.reset();
                 grecaptcha.reset(recaptchaWidgetId);
 
                 messageDiv.style.color = 'green';
-                messageDiv.textContent = 'Formulario enviado correctamente.';
+                messageDiv.textContent = 'Formulario enviado correctamente. Descargando brochure...';
 
             } catch (error) {
                 console.error('Error:', error);
