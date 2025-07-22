@@ -1949,11 +1949,11 @@
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 messageDiv.textContent = '';
-                messageDiv.style.color = '';
+                messageDiv.classList.remove('alert', 'alert-danger', 'alert-success');
 
                 const recaptchaToken = grecaptcha.getResponse(recaptchaWidgetIds[formNum]);
                 if (!recaptchaToken) {
-                    messageDiv.style.color = 'red';
+                    messageDiv.classList.add('alert', 'alert-danger');
                     messageDiv.textContent = 'Por favor, completa el reCAPTCHA.';
                     return;
                 }
@@ -1985,7 +1985,7 @@
 
                     if (!response.ok) {
                         const err = await response.json();
-                        messageDiv.style.color = 'red';
+                        messageDiv.classList.add('alert', 'alert-danger');
                         messageDiv.textContent = err.error || 'Error al enviar el formulario.';
                         return;
                     }
@@ -2001,14 +2001,14 @@
                         a.remove();
                         window.URL.revokeObjectURL(url);
 
-                        messageDiv.style.color = 'green';
+                        messageDiv.classList.add('alert', 'alert-success');
                         messageDiv.textContent = 'Formulario enviado correctamente. Descargando brochure...';
 
                         setTimeout(() => {
                             window.location.href = 'https://back-altai.onrender.com/brochure.pdf';
                         }, 3000);
                     } else {
-                        messageDiv.style.color = 'green';
+                        messageDiv.classList.add('alert', 'alert-success');
                         messageDiv.textContent = 'Formulario enviado correctamente.';
                     }
 
@@ -2017,7 +2017,7 @@
 
                 } catch (error) {
                     console.error('Error:', error);
-                    messageDiv.style.color = 'red';
+                    messageDiv.classList.add('alert', 'alert-danger');
                     messageDiv.textContent = 'Error de red o del servidor.';
                 }
             });
