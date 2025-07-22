@@ -373,6 +373,12 @@
         .nice-select {
             display: none;
         }
+
+        #recaptcha-1,
+        #recaptcha-2,
+        #recaptcha-3 {
+            margin: 23px 0;
+        }
     </style>
 </head>
 
@@ -643,69 +649,52 @@
                                 </div>
                                 <div class="col-12 col-sm-12 col-lg-6 ">
 
-                                    <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+                                    <!-- <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
                                     <script src="https://www.google.com/recaptcha/api.js"></script>
                                     <script>
                                         function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") { var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value); elems["ts"] = JSON.stringify(new Date().getTime()); document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500); 
-                                    </script>
+                                    </script> -->
 
-                                    <form id="contact-form" action="mail.php" method="post">
+                                    <div id="form-message-1" style="color: red; margin-bottom: 1em;"></div>
+                                    <form id="lead-form-1">
+                                        <input type="hidden" name="oid" value="00Do0000000b6Io">
+                                        <input type="hidden" name="captcha_settings"
+                                            value='{"keyname":"CAPCHA_GENERICO2025","fallback":"true","orgId":"00Do0000000b6Io","ts":""}'>
+
 
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="input-item input-item-name ltn__custom-icon">
-                                                    <input type="text" name="name" placeholder="Nombre">
+                                                    <input id="first_name" type="text" name="first_name"
+                                                        placeholder="Nombre">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="input-item input-item-name ltn__custom-icon">
-                                                    <input type="text" name="apellidoPaterno"
-                                                        placeholder="Apellido Paterno">
+                                                    <input type="text" maxlength="40" id="middle_name"
+                                                        name="middle_name" placeholder="Apellido Paterno">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="input-item input-item-name ltn__custom-icon">
-                                                    <input type="text" name="apellidoMaterno"
+                                                    <input id="last_name" name="last_name" type="text" required
                                                         placeholder="Apellido Materno">
+
+                                                    <!-- <input id="last_name" name="last_name" type="text" required> -->
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="input-item input-item-email ltn__custom-icon">
-                                                    <input type="email" name="email" placeholder="Email">
+                                                    <input id="email" name="email" type="email" placeholder="Email">
+                                                    <!-- <input id="email" name="email" type="email" required><br> -->
                                                 </div>
-                                                <!-- <div class="input-item">
-                                                    <select class="nice-select" style="display: none;">
-                                                        <option>Select Service Type</option>
-                                                        <option>Property Management </option>
-                                                        <option>Mortgage Service </option>
-                                                        <option>Consulting Service</option>
-                                                        <option>Home Buying</option>
-                                                        <option>Home Selling</option>
-                                                        <option>Escrow Services</option>
-                                                    </select>
-                                                    <div class="nice-select" tabindex="0"><span class="current">Select
-                                                            Service Type</span>
-                                                        <ul class="list">
-                                                            <li data-value="Select Service Type"
-                                                                class="option selected">Select Service Type</li>
-                                                            <li data-value="Property Management" class="option">Property
-                                                                Management </li>
-                                                            <li data-value="Mortgage Service" class="option">Mortgage
-                                                                Service </li>
-                                                            <li data-value="Consulting Service" class="option">
-                                                                Consulting Service</li>
-                                                            <li data-value="Home Buying" class="option">Home Buying</li>
-                                                            <li data-value="Home Selling" class="option">Home Selling
-                                                            </li>
-                                                            <li data-value="Escrow Services" class="option">Escrow
-                                                                Services</li>
-                                                        </ul>
-                                                    </div>
-                                                </div> -->
+
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="input-item input-item-phone ltn__custom-icon">
-                                                    <input type="text" name="phone" placeholder="Teléfono">
+                                                    <input id="phone" name="phone" type="text" required
+                                                        placeholder="Teléfono">
+                                                    <!-- <input id="phone" name="phone" type="text" required><br> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -717,11 +706,21 @@
                                                 Acepto Políticas de Privacidad
                                             </label>
                                         </div>
-                                        <div class="mt-4">
-                                            <div class="g-recaptcha"
-                                                data-sitekey="6LeYyF4rAAAAAHybD_FuW3g0NiJJwUX7_VnfiJLv"></div><br>
-                                        </div>
 
+                                        <input type="hidden" name="00N3l00000Q7A54" value="ALTAI">
+                                        <select type="hidden" id="00N3l00000Q7A4n" name="00N3l00000Q7A4n"
+                                            title="Canal de Venta">
+                                            <option selected value="Medios Digitales">Medios Digitales</option>
+                                        </select>
+
+                                        <select type="hidden" id="00N3l00000Q7A5S" name="00N3l00000Q7A5S"
+                                            title="Subcanal de Venta">
+                                            <option selected value="Micrositios">Micrositios</option>
+                                        </select>
+                                        <input type="hidden" name="00N3l00000Q7A57" value="Landing_QuintanaRoo">
+                                        <input type="hidden" name="00N3l00000Q7A4k" value="Información">
+
+                                        <div id="recaptcha-1"></div>
                                         <div class="btn-wrapper mt-0">
                                             <button class="btn theme-btn-1 btn-effect-1 text-uppercase w-100"
                                                 type="submit">solicitar información <i
@@ -734,230 +733,7 @@
                                 </div>
                             </div>
 
-                            <!--   <div class="row">
-                                <div class="col-lg-12 align-self-center">
-                                    <div class="slide-item-car-dealer-form">
-                                        <div class="section-title-area ltn__section-title-2 text-center">
-                                            <h1 class="section-title  text-color-white">Altai Residencial
-                                                <span
-                                                    class="ltn__secondary-color-3">Perfect</span> Home
-                                            </h1>
-                                            <p>Vive sobre la Av. Huayacan con Altai. Un residencial de lujo en el
-                                                corazón del Caribe, lleno de la naturaleza para que tu y tu familia
-                                                crezcan cerca del hermoso mar que Cancún te ofrece.</p>
-                                        </div>
-                                        <div class="ltn__car-dealer-form-tab">
-                                            <div class="ltn__tab-menu  text-uppercase text-center">
-                                                <div class="nav">
-                                                    <a class="active show" data-bs-toggle="tab"
-                                                        href="#ltn__form_tab_1_1"><i class="fas fa-home"></i>Rent
-                                                        Home</a>
-                                                    <a data-bs-toggle="tab" href="#ltn__form_tab_1_2" class=""><i
-                                                            class="fas fa-home"></i>Sale Home</a>
-                                                </div>
-                                            </div>
-                                            <div class="tab-content pb-10">
-                                                <div class="tab-pane fade active show" id="ltn__form_tab_1_1">
-                                                    <div class="car-dealer-form-inner">
-                                                        <form action="#" class="ltn__car-dealer-form-box row">
-                                                            <div
-                                                                class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-car col-lg-3 col-md-6">
-                                                                <select class="nice-select" style="display: none;">
-                                                                    <option>Property Type</option>
-                                                                    <option>Apartment</option>
-                                                                    <option>Co-op</option>
-                                                                    <option>Condo</option>
-                                                                    <option>Single Family Home</option>
-                                                                </select>
-                                                                <div class="nice-select" tabindex="0"><span
-                                                                        class="current">Property Type</span>
-                                                                    <ul class="list">
-                                                                        <li data-value="Property Type"
-                                                                            class="option selected">Property Type</li>
-                                                                        <li data-value="Apartment" class="option">
-                                                                            Apartment</li>
-                                                                        <li data-value="Co-op" class="option">Co-op</li>
-                                                                        <li data-value="Condo" class="option">Condo</li>
-                                                                        <li data-value="Single Family Home"
-                                                                            class="option">Single Family Home</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                            <div
-                                                                class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-meter col-lg-3 col-md-6">
-                                                                <select class="nice-select" style="display: none;">
-                                                                    <option>Location</option>
-                                                                    <option>chicago</option>
-                                                                    <option>London</option>
-                                                                    <option>Los Angeles</option>
-                                                                    <option>New York</option>
-                                                                    <option>New Jersey</option>
-                                                                </select>
-                                                                <div class="nice-select" tabindex="0"><span
-                                                                        class="current">Location</span>
-                                                                    <ul class="list">
-                                                                        <li data-value="Location"
-                                                                            class="option selected">Location</li>
-                                                                        <li data-value="chicago" class="option">chicago
-                                                                        </li>
-                                                                        <li data-value="London" class="option">London
-                                                                        </li>
-                                                                        <li data-value="Los Angeles" class="option">Los
-                                                                            Angeles</li>
-                                                                        <li data-value="New York" class="option">New
-                                                                            York</li>
-                                                                        <li data-value="New Jersey" class="option">New
-                                                                            Jersey</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                            <div
-                                                                class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar col-lg-3 col-md-6">
-                                                                <select class="nice-select" style="display: none;">
-                                                                    <option>Sub Location</option>
-                                                                    <option>Bayonne</option>
-                                                                    <option>Greenville</option>
-                                                                    <option>Manhattan</option>
-                                                                    <option>Queens</option>
-                                                                    <option>The Heights</option>
-                                                                    <option>Upper East Side</option>
-                                                                    <option>West Side</option>
-                                                                </select>
-                                                                <div class="nice-select" tabindex="0"><span
-                                                                        class="current">Sub Location</span>
-                                                                    <ul class="list">
-                                                                        <li data-value="Sub Location"
-                                                                            class="option selected">Sub Location</li>
-                                                                        <li data-value="Bayonne" class="option">Bayonne
-                                                                        </li>
-                                                                        <li data-value="Greenville" class="option">
-                                                                            Greenville</li>
-                                                                        <li data-value="Manhattan" class="option">
-                                                                            Manhattan</li>
-                                                                        <li data-value="Queens" class="option">Queens
-                                                                        </li>
-                                                                        <li data-value="The Heights" class="option">The
-                                                                            Heights</li>
-                                                                        <li data-value="Upper East Side" class="option">
-                                                                            Upper East Side</li>
-                                                                        <li data-value="West Side" class="option">West
-                                                                            Side</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                            <div
-                                                                class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar col-lg-3 col-md-6">
-                                                                <div class="btn-wrapper text-center mt-0">
-                                                                <button type="submit" class="btn theme-btn-1 btn-effect-1 text-uppercase">Search Inventory</button> 
-                                                                    <a href="shop-right-sidebar.html"
-                                                                        class="btn theme-btn-1 btn-effect-1 text-uppercase">Search</a>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                                <div class="tab-pane fade" id="ltn__form_tab_1_2">
-                                                    <div class="car-dealer-form-inner">
-                                                        <form action="#" class="ltn__car-dealer-form-box row">
-                                                            <div
-                                                                class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-car col-lg-3 col-md-6">
-                                                                <select class="nice-select" style="display: none;">
-                                                                    <option>Property Type</option>
-                                                                    <option>Apartment</option>
-                                                                    <option>Co-op</option>
-                                                                    <option>Condo</option>
-                                                                    <option>Single Family Home</option>
-                                                                </select>
-                                                                <div class="nice-select" tabindex="0"><span
-                                                                        class="current">Property Type</span>
-                                                                    <ul class="list">
-                                                                        <li data-value="Property Type"
-                                                                            class="option selected">Property Type</li>
-                                                                        <li data-value="Apartment" class="option">
-                                                                            Apartment</li>
-                                                                        <li data-value="Co-op" class="option">Co-op</li>
-                                                                        <li data-value="Condo" class="option">Condo</li>
-                                                                        <li data-value="Single Family Home"
-                                                                            class="option">Single Family Home</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                            <div
-                                                                class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-meter col-lg-3 col-md-6">
-                                                                <select class="nice-select" style="display: none;">
-                                                                    <option>Location</option>
-                                                                    <option>chicago</option>
-                                                                    <option>London</option>
-                                                                    <option>Los Angeles</option>
-                                                                    <option>New York</option>
-                                                                    <option>New Jersey</option>
-                                                                </select>
-                                                                <div class="nice-select" tabindex="0"><span
-                                                                        class="current">Location</span>
-                                                                    <ul class="list">
-                                                                        <li data-value="Location"
-                                                                            class="option selected">Location</li>
-                                                                        <li data-value="chicago" class="option">chicago
-                                                                        </li>
-                                                                        <li data-value="London" class="option">London
-                                                                        </li>
-                                                                        <li data-value="Los Angeles" class="option">Los
-                                                                            Angeles</li>
-                                                                        <li data-value="New York" class="option">New
-                                                                            York</li>
-                                                                        <li data-value="New Jersey" class="option">New
-                                                                            Jersey</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                            <div
-                                                                class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar col-lg-3 col-md-6">
-                                                                <select class="nice-select" style="display: none;">
-                                                                    <option>Sub Location</option>
-                                                                    <option>Bayonne</option>
-                                                                    <option>Greenville</option>
-                                                                    <option>Manhattan</option>
-                                                                    <option>Queens</option>
-                                                                    <option>The Heights</option>
-                                                                    <option>Upper East Side</option>
-                                                                    <option>West Side</option>
-                                                                </select>
-                                                                <div class="nice-select" tabindex="0"><span
-                                                                        class="current">Sub Location</span>
-                                                                    <ul class="list">
-                                                                        <li data-value="Sub Location"
-                                                                            class="option selected">Sub Location</li>
-                                                                        <li data-value="Bayonne" class="option">Bayonne
-                                                                        </li>
-                                                                        <li data-value="Greenville" class="option">
-                                                                            Greenville</li>
-                                                                        <li data-value="Manhattan" class="option">
-                                                                            Manhattan</li>
-                                                                        <li data-value="Queens" class="option">Queens
-                                                                        </li>
-                                                                        <li data-value="The Heights" class="option">The
-                                                                            Heights</li>
-                                                                        <li data-value="Upper East Side" class="option">
-                                                                            Upper East Side</li>
-                                                                        <li data-value="West Side" class="option">West
-                                                                            Side</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                            <div
-                                                                class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar col-lg-3 col-md-6">
-                                                                <div class="btn-wrapper text-center mt-0">
-                                                                    <button type="submit" class="btn theme-btn-1 btn-effect-1 text-uppercase">Search Inventory</button> 
-                                                                    <a href="shop-right-sidebar.html"
-                                                                        class="btn theme-btn-1 btn-effect-1 text-uppercase">Search</a>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                        </div> -->
+
                         </div>
                     </div>
                 </div>
@@ -967,376 +743,7 @@
     </div>
 
 
-    <!-- SLIDER AREA START (slider-1) 
-    <div class="ltn__slider-area ltn__slider-6">
-        <div class="ltn__slide-one-active slick-slide-arrow-1 slick-slide-dots-1">
-           ltn__slide-item 
-            <div class="ltn__slide-item--- ltn__slide-item-9 section-bg-1 video-bg" data-bs-bg="img/slider/52.jpg">
-                <video autoplay muted loop playsinline class="bg-video">
-                    <source src="video/portada.mp4" type="video/mp4">
-                    Tu navegador no soporta video HTML5.
-                </video>
-                <div class="ltn__slide-item-inner">
-                    <div class="slide-item-info bg-overlay-white-90 text-center">
-                        <div class="slide-item-info-inner slide-item-info-line-no  ltn__slide-animation">
 
-                            <div class="slide-item-car-dealer-form">
-                               <div class="section-title-area ltn__section-title-2 text-center">
-                                    <h1 class="section-title  text-color-white">Find Your <span class="ltn__secondary-color-3">Perfect</span> Car</h1>
-                                </div> 
-                                <h3 class="text-color-white--- text-center mb-30">Altai Residecnial
-                                     <span
-                                        class="ltn__secondary-color-3">Perfect</span> 
-                                        Home 
-                                </h3>
-                                <div class="ltn__car-dealer-form-tab">
-                                   <div class="ltn__tab-menu  text-uppercase text-center">
-                                        <div class="nav">
-                                            <a class="active show" data-bs-toggle="tab" href="#ltn__form_tab_1_1"><i
-                                                    class="fas fa-home"></i>Rent Home</a>
-                                            <a data-bs-toggle="tab" href="#ltn__form_tab_1_2" class=""><i
-                                                        class="fas fa-home"></i>Sale Home</a> 
-                                        </div>
-                                    </div> 
-                                    <div class="tab-content pb-10">
-                                        <div class="tab-pane fade active show" id="ltn__form_tab_1_1">
-                                            <div class="car-dealer-form-inner">
-                                                <form id="contact-form" action="mail.php" method="post">
-
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="input-item input-item-name ltn__custom-icon">
-                                                                <input type="text" name="name" placeholder="Nombre">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-12">
-                                                            <div class="input-item input-item-name ltn__custom-icon">
-                                                                <input type="text" name="apellidoPaterno"
-                                                                    placeholder="Apellido Paterno">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-12">
-                                                            <div class="input-item input-item-name ltn__custom-icon">
-                                                                <input type="text" name="apellidoMaterno"
-                                                                    placeholder="Apellido Materno">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-12">
-                                                            <div class="input-item input-item-email ltn__custom-icon">
-                                                                <input type="email" name="email"
-                                                                    placeholder="Enter email address">
-                                                            </div>
-                                                            <div class="input-item">
-                                                    <select class="nice-select" style="display: none;">
-                                                        <option>Select Service Type</option>
-                                                        <option>Property Management </option>
-                                                        <option>Mortgage Service </option>
-                                                        <option>Consulting Service</option>
-                                                        <option>Home Buying</option>
-                                                        <option>Home Selling</option>
-                                                        <option>Escrow Services</option>
-                                                    </select>
-                                                    <div class="nice-select" tabindex="0"><span class="current">Select
-                                                            Service Type</span>
-                                                        <ul class="list">
-                                                            <li data-value="Select Service Type"
-                                                                class="option selected">Select Service Type</li>
-                                                            <li data-value="Property Management" class="option">Property
-                                                                Management </li>
-                                                            <li data-value="Mortgage Service" class="option">Mortgage
-                                                                Service </li>
-                                                            <li data-value="Consulting Service" class="option">
-                                                                Consulting Service</li>
-                                                            <li data-value="Home Buying" class="option">Home Buying</li>
-                                                            <li data-value="Home Selling" class="option">Home Selling
-                                                            </li>
-                                                            <li data-value="Escrow Services" class="option">Escrow
-                                                                Services</li>
-                                                        </ul>
-                                                    </div>
-                                                </div> 
-                                                        </div>
-                                                        <div class="col-md-12">
-                                                            <div class="input-item input-item-phone ltn__custom-icon">
-                                                                <input type="text" name="phone"
-                                                                    placeholder="Enter phone number">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <p><label class="input-info-save mb-0"><input type="checkbox"
-                                                                name="agree">
-                                                            Acepto Políticas de Privacidad</label></p>
-                                                    <div class="btn-wrapper mt-0">
-                                                        <button class="btn theme-btn-1 btn-effect-1 text-uppercase"
-                                                            type="submit">solicitar información</button>
-                                                    </div>
-                                                    <p class="form-messege mb-0 mt-20"></p>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="ltn__form_tab_1_2">
-                                            <div class="car-dealer-form-inner">
-                                                <form action="#" class="ltn__car-dealer-form-box row">
-                                                    <div
-                                                        class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-car col-lg-12 col-md-12">
-                                                        <select class="nice-select">
-                                                            <option>Property Type</option>
-                                                            <option>Apartment</option>
-                                                            <option>Co-op</option>
-                                                            <option>Condo</option>
-                                                            <option>Single Family Home</option>
-                                                        </select>
-                                                    </div>
-                                                    <div
-                                                        class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-meter col-lg-12 col-md-12">
-                                                        <select class="nice-select">
-                                                            <option>Location</option>
-                                                            <option>chicago</option>
-                                                            <option>London</option>
-                                                            <option>Los Angeles</option>
-                                                            <option>New York</option>
-                                                            <option>New Jersey</option>
-                                                        </select>
-                                                    </div>
-                                                    <div
-                                                        class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar col-lg-12 col-md-12">
-                                                        <select class="nice-select">
-                                                            <option>Sub Location</option>
-                                                            <option>Bayonne</option>
-                                                            <option>Greenville</option>
-                                                            <option>Manhattan</option>
-                                                            <option>Queens</option>
-                                                            <option>The Heights</option>
-                                                            <option>Upper East Side</option>
-                                                            <option>West Side</option>
-                                                        </select>
-                                                    </div>
-                                                    <div
-                                                        class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar col-lg-12 col-md-12">
-                                                        <div class="btn-wrapper text-center mt-0">
-                                                            <button type="submit" class="btn theme-btn-1 btn-effect-1 text-uppercase">Search Inventory</button> 
-                                                            <a href="shop-right-sidebar.html"
-                                                                class="btn theme-btn-1 btn-effect-1 text-uppercase">Search</a>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-       
-        </div>
-    </div>
-SLIDER AREA END -->
-
-    <!--  <div class="ltn__upcoming-project-area section-bg-1--- bg-image-top pt-115 pb-65" data-bs-bg="img/bg/22.jpg"
-        style="background-image: url(&quot;img/bg/22.jpg&quot;);">
-        <div class="container">
-          <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section-title-area ltn__section-title-2--- text-center---">
-                            <h6 class="section-subtitle section-subtitle-2--- ltn__secondary-color--- white-color">
-                                Upcoming Projects</h6>
-                            <h1 class="section-title  white-color">Dream Living Space <br>
-                                Setting New Standards</h1>
-                        </div>
-                    </div>
-                </div> 
-            <div class="row ltn__upcoming-project-slider-1-active slick-arrow-3 slick-initialized slick-slider">
-                <a
-                        class="slick-prev slick-arrow" style=""><i class="fas fa-arrow-left" alt="Arrow Icon"></i></a> 
-                upcoming-project-item 
-                <div aria-live="polite" class="slick-list draggable">
-                    <div class="slick-track"
-                        style="opacity: 1; width: 6000px; transform: translate3d(-1200px, 0px, 0px);" role="listbox">
-                        <div class="col-lg-12 slick-slide slick-cloned" data-slick-index="-1" id="" aria-hidden="true"
-                            style="width: 1200px;" tabindex="-1">
-                            <div class="ltn__upcoming-project-item">
-                                <div class="row">
-                                    <div class="col-lg-7">
-                                        <div class="ltn__upcoming-project-img">
-                                            <img src="img/product-3/7.jpg" alt="#">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-5 section-bg-1">
-                                        <div class="ltn__upcoming-project-info ltn__menu-widget">
-                                            <h6 class="ltn__secondary-color">About Projects</h6>
-                                            <h1>Upcoming Projects</h1>
-                                            <ul>
-                                                <li>1. Project Name: <span>Quarter</span></li>
-                                                <li>2. Project Type: <span>Apartment / Home</span></li>
-                                                <li>3. Building Location: <span>New York, USA</span></li>
-                                                <li>4. No. Of Apartments: <span>568</span></li>
-                                                <li>5. Total Investment: <span>$14,500,00</span></li>
-                                            </ul>
-                                            <div class="btn-wrapper animated">
-                                                <a href="contact.html" class="theme-btn-1 btn btn-effect-1"
-                                                    tabindex="-1">Descargar
-                                                    Brochure</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 slick-slide slick-current slick-active" data-slick-index="0"
-                            aria-hidden="false" style="width: 1200px;" tabindex="-1" role="option"
-                            aria-describedby="slick-slide40">
-                            <div class="ltn__upcoming-project-item">
-                                <div class="row">
-                                    <div class="col-lg-7">
-                                        <div class="ltn__upcoming-project-img">
-                                            <img src="img/product-3/catania.jpg" alt="#">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-5 section-bg-1">
-                                        <div class="ltn__upcoming-project-info ltn__menu-widget">
-                                            <h6 class="section-subtitle ltn__secondary-color mb-0">Prototipo
-                                            </h6>
-                                            <h1 class="mb-30">Catania</h1>
-                                            <p>Un innovador diseño que te da lo mejor del Caribe Mexicano en tu nuevo
-                                                hogar.</p>
-                                             <ul class="mt">
-                                                <li>1. Project Name: <span>Quarter</span></li>
-                                                <li>2. Project Type: <span>Apartment / Home</span></li>
-                                                <li>3. Building Location: <span>New York, USA</span></li>
-
-                                            </ul> 
-
-                                            <ul class="ltn__list-item-half clearfix">
-                                                <li>
-                                                    <i class="flaticon-home-2"></i>2 pisos
-                                                </li>
-                                                <li>
-                                                    <i class="flaticon-mountain"></i>3 habitaciones
-
-                                                </li>
-                                                <li>
-                                                    <i class="flaticon-heart"></i>2.5 baños
-                                                </li>
-                                                <li>
-                                                    <i class="flaticon-secure"></i>2 cocheras
-
-                                                </li>
-                                            </ul>
-                                            <div class="btn-wrapper animated">
-                                                <a href="contact.html" class="theme-btn-1 btn btn-effect-1"
-                                                    tabindex="0">Descargar
-                                                    Brochure</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 slick-slide" data-slick-index="1" aria-hidden="true"
-                            style="width: 1200px;" tabindex="-1" role="option" aria-describedby="slick-slide41">
-                            <div class="ltn__upcoming-project-item">
-                                <div class="row">
-                                    <div class="col-lg-7">
-                                        <div class="ltn__upcoming-project-img">
-                                            <img src="img/product-3/2.jpg" alt="#">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-5 section-bg-1">
-                                        <div class="ltn__upcoming-project-info ltn__menu-widget">
-                                            <h6 class="ltn__secondary-color">About Projects</h6>
-                                            <h1>Upcoming Projects</h1>
-                                            <ul>
-                                                <li>1. Project Name: <span>Quarter</span></li>
-                                                <li>2. Project Type: <span>Apartment / Home</span></li>
-                                                <li>3. Building Location: <span>New York, USA</span></li>
-                                                <li>4. No. Of Apartments: <span>568</span></li>
-                                                <li>5. Total Investment: <span>$14,500,00</span></li>
-                                            </ul>
-                                            <div class="btn-wrapper animated">
-                                                <a href="contact.html" class="theme-btn-1 btn btn-effect-1"
-                                                    tabindex="-1">Descargar
-                                                    Brochure</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 slick-slide" data-slick-index="2" aria-hidden="true"
-                            style="width: 1200px;" tabindex="-1" role="option" aria-describedby="slick-slide42">
-                            <div class="ltn__upcoming-project-item">
-                                <div class="row">
-                                    <div class="col-lg-7">
-                                        <div class="ltn__upcoming-project-img">
-                                            <img src="img/product-3/7.jpg" alt="#">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-5 section-bg-1">
-                                        <div class="ltn__upcoming-project-info ltn__menu-widget">
-                                            <h6 class="ltn__secondary-color">About Projects</h6>
-                                            <h1>Upcoming Projects</h1>
-                                            <ul>
-                                                <li>1. Project Name: <span>Quarter</span></li>
-                                                <li>2. Project Type: <span>Apartment / Home</span></li>
-                                                <li>3. Building Location: <span>New York, USA</span></li>
-                                                <li>4. No. Of Apartments: <span>568</span></li>
-                                                <li>5. Total Investment: <span>$14,500,00</span></li>
-                                            </ul>
-                                            <div class="btn-wrapper animated">
-                                                <a href="contact.html" class="theme-btn-1 btn btn-effect-1"
-                                                    tabindex="-1">Descargar
-                                                    Brochure</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 slick-slide slick-cloned" data-slick-index="3" id="" aria-hidden="true"
-                            style="width: 1200px;" tabindex="-1">
-                            <div class="ltn__upcoming-project-item">
-                                <div class="row">
-                                    <div class="col-lg-7">
-                                        <div class="ltn__upcoming-project-img">
-                                            <img src="img/product-3/catania.jpg" alt="#">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-5 section-bg-1">
-                                        <div class="ltn__upcoming-project-info ltn__menu-widget">
-                                            <h6 class="section-subtitle ltn__secondary-color mb-0">About Projects
-                                            </h6>
-                                            <h1 class="mb-30">Upcoming Projects</h1>
-                                            <ul class="mt">
-                                                <li>1. Project Name: <span>Quarter</span></li>
-                                                <li>2. Project Type: <span>Apartment / Home</span></li>
-                                                <li>3. Building Location: <span>New York, USA</span></li>
-                                                <li>4. No. Of Apartments: <span>568</span></li>
-                                                <li>5. Total Investment: <span>$14,500,00</span></li>
-                                            </ul>
-                                            <div class="btn-wrapper animated">
-                                                <a href="contact.html" class="theme-btn-1 btn btn-effect-1"
-                                                    tabindex="-1">Descargar
-                                                    Brochure</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                 upcoming-project-item 
-
-                 upcoming-project-item 
-
-               
-                <a class="slick-next slick-arrow" style=""><i class="fas fa-arrow-right" alt="Arrow Icon"></i></a>
-            </div>
-        </div>
-    </div> -->
 
 
     <!-- ABOUT US AREA START -->
@@ -1535,30 +942,7 @@ SLIDER AREA END -->
 
                                             </label>
                                         </li>
-                                        <!-- <li>
-                                            <label class="checkbox-item">Gym
-                                                <input type="checkbox" checked="checked">
-                                                <span class="checkmark"></span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label class="checkbox-item">Microwave
-                                                <input type="checkbox" checked="checked">
-                                                <span class="checkmark"></span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label class="checkbox-item">Swimming Pool
-                                                <input type="checkbox" checked="checked">
-                                                <span class="checkmark"></span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label class="checkbox-item">WiFi
-                                                <input type="checkbox" checked="checked">
-                                                <span class="checkmark"></span>
-                                            </label>
-                                        </li> -->
+
                                     </ul>
                                 </div>
                             </div>
@@ -1568,293 +952,7 @@ SLIDER AREA END -->
             </div>
 
 
-            <!--       <div class="row ltn__category-slider-active--- slick-arrow-1 justify-content-center">
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-car"></i></span>
-                            <span class="category-number">01</span>
-                            <span class="category-title">Accesos controlados</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-car"></i></span>
-                            <span class="category-number">02</span>
-                            <span class="category-title">Alberca</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-car"></i></span>
-                            <span class="category-number">01</span>
-                            <span class="category-title">Parking Space</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-car"></i></span>
-                            <span class="category-number">01</span>
-                            <span class="category-title">Parking Space</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-car"></i></span>
-                            <span class="category-number">01</span>
-                            <span class="category-title">Parking Space</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-car"></i></span>
-                            <span class="category-number">01</span>
-                            <span class="category-title">Parking Space</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-car"></i></span>
-                            <span class="category-number">01</span>
-                            <span class="category-title">Parking Space</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-car"></i></span>
-                            <span class="category-number">01</span>
-                            <span class="category-title">Parking Space</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-car"></i></span>
-                            <span class="category-number">01</span>
-                            <span class="category-title">Parking Space</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-car"></i></span>
-                            <span class="category-number">01</span>
-                            <span class="category-title">Parking Space</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-car"></i></span>
-                            <span class="category-number">01</span>
-                            <span class="category-title">Parking Space</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-car"></i></span>
-                            <span class="category-number">01</span>
-                            <span class="category-title">Parking Space</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-car"></i></span>
-                            <span class="category-number">01</span>
-                            <span class="category-title">Parking Space</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-car"></i></span>
-                            <span class="category-number">01</span>
-                            <span class="category-title">Parking Space</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-car"></i></span>
-                            <span class="category-number">01</span>
-                            <span class="category-title">Parking Space</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                             <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-swimming"></i></span>
-                            <span class="category-number">02</span>
-                            <span class="category-title">Swimming Pool</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-secure-shield"></i></span>
-                            <span class="category-number">03</span>
-                            <span class="category-title">Private Security</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-           <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-stethoscope"></i></span>
-                            <span class="category-number">04</span>
-                            <span class="category-title">Medical Center</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-book"></i></span>
-                            <span class="category-number">05</span>
-                            <span class="category-title">Library Area</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-bed-1"></i></span>
-                            <span class="category-number">06</span>
-                            <span class="category-title">King Size Beds</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-home-2"></i></span>
-                            <span class="category-number">07</span>
-                            <span class="category-title">Smart Homes</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-slider"></i></span>
-                            <span class="category-number">08</span>
-                            <span class="category-title">Kid’s Playland</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div> -->
+
         </div>
     </div>
     </div>
@@ -1942,293 +1040,6 @@ SLIDER AREA END -->
             </div>
 
 
-            <!--       <div class="row ltn__category-slider-active--- slick-arrow-1 justify-content-center">
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-car"></i></span>
-                            <span class="category-number">01</span>
-                            <span class="category-title">Accesos controlados</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-car"></i></span>
-                            <span class="category-number">02</span>
-                            <span class="category-title">Alberca</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-car"></i></span>
-                            <span class="category-number">01</span>
-                            <span class="category-title">Parking Space</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-car"></i></span>
-                            <span class="category-number">01</span>
-                            <span class="category-title">Parking Space</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-car"></i></span>
-                            <span class="category-number">01</span>
-                            <span class="category-title">Parking Space</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-car"></i></span>
-                            <span class="category-number">01</span>
-                            <span class="category-title">Parking Space</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-car"></i></span>
-                            <span class="category-number">01</span>
-                            <span class="category-title">Parking Space</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-car"></i></span>
-                            <span class="category-number">01</span>
-                            <span class="category-title">Parking Space</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-car"></i></span>
-                            <span class="category-number">01</span>
-                            <span class="category-title">Parking Space</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-car"></i></span>
-                            <span class="category-number">01</span>
-                            <span class="category-title">Parking Space</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-car"></i></span>
-                            <span class="category-number">01</span>
-                            <span class="category-title">Parking Space</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-car"></i></span>
-                            <span class="category-number">01</span>
-                            <span class="category-title">Parking Space</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-car"></i></span>
-                            <span class="category-number">01</span>
-                            <span class="category-title">Parking Space</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-car"></i></span>
-                            <span class="category-number">01</span>
-                            <span class="category-title">Parking Space</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-car"></i></span>
-                            <span class="category-number">01</span>
-                            <span class="category-title">Parking Space</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                             <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-swimming"></i></span>
-                            <span class="category-number">02</span>
-                            <span class="category-title">Swimming Pool</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-secure-shield"></i></span>
-                            <span class="category-number">03</span>
-                            <span class="category-title">Private Security</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-           <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-stethoscope"></i></span>
-                            <span class="category-number">04</span>
-                            <span class="category-title">Medical Center</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-book"></i></span>
-                            <span class="category-number">05</span>
-                            <span class="category-title">Library Area</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-bed-1"></i></span>
-                            <span class="category-number">06</span>
-                            <span class="category-title">King Size Beds</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-home-2"></i></span>
-                            <span class="category-number">07</span>
-                            <span class="category-title">Smart Homes</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-6">
-                    <div class="ltn__category-item ltn__category-item-5 ltn__category-item-5-2 text-center---">
-                        <a href="shop.html">
-                            <span class="category-icon"><i class="flaticon-slider"></i></span>
-                            <span class="category-number">08</span>
-                            <span class="category-title">Kid’s Playland</span>
-                            <span class="category-brief">
-                                Enimad minim veniam quis no exercitation ullamco lab
-                            </span>
-                            <span class="category-btn d-none"><i class="flaticon-right-arrow"></i></span>
-                        </a>
-                    </div>
-                </div> -->
         </div>
     </div>
     </div>
@@ -2240,23 +1051,7 @@ SLIDER AREA END -->
             </h6>
             <h1 class="section-title">Galería</h1>
         </div>
-        <!-- 
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="ltn__gallery-menu">
-                        <div class="ltn__gallery-filter-menu portfolio-filter text-uppercase mb-50">
-                            <button data-filter="*" class="active">all</button>
-                            <button data-filter=".filter_category_1">Houses</button>
-                            <button data-filter=".filter_category_2">Retail</button>
-                            <button data-filter=".filter_category_3">Condos</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-             -->
 
-        <!-- Portfolio Wrapper Start -->
-        <!-- (ltn__gallery-info-hide) Class for 'ltn__gallery-item-info' not showing -->
 
 
 
@@ -2269,20 +1064,7 @@ SLIDER AREA END -->
     <!-- Gallery area start -->
     <div class="ltn__gallery-area mb-120">
         <div class="container">
-            <!-- 
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="ltn__gallery-menu">
-                        <div class="ltn__gallery-filter-menu portfolio-filter text-uppercase mb-50">
-                            <button data-filter="*" class="active">all</button>
-                            <button data-filter=".filter_category_1">Houses</button>
-                            <button data-filter=".filter_category_2">Retail</button>
-                            <button data-filter=".filter_category_3">Condos</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-             -->
+
 
             <!-- Portfolio Wrapper Start -->
             <!-- (ltn__gallery-info-hide) Class for 'ltn__gallery-item-info' not showing -->
@@ -2530,25 +1312,7 @@ SLIDER AREA END -->
 
 
 
-            <!-- pagination start -->
-            <!-- 
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="ltn__pagination text-center margin-top-50">
-                        <ul>
-                            <li class="arrow-icon"><a href="#"> &leftarrow; </a></li>
-                            <li class="active"><a href="blog.html">1</a></li>
-                            <li><a href="blog-2.html">2</a></li>
-                            <li><a href="blog-2.html">3</a></li>
-                            <li><a href="blog-2.html">...</a></li>
-                            <li><a href="blog-2.html">10</a></li>
-                            <li class="arrow-icon"><a href="#"> &rightarrow; </a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            -->
-            <!-- pagination end -->
+
 
         </div>
     </div>
@@ -2577,25 +1341,7 @@ SLIDER AREA END -->
                         <div class="tab-pane fade" id="liton_tab_3_1">
                             <div class="ltn__apartments-tab-content-inner">
                                 <div class="row">
-                                    <!-- <div class="col-lg-6">
-                                        <div
-                                            class="apartments-plan-info ltn__secondary-bg--- section-bg-1 text-color-white---">
-                                            <h2>The Studio</h2>
-                                            <p>Enimad minim veniam quis nostrud exercitation ullamco laboris.
-                                                Lorem ipsum dolor sit amet cons aetetur adipisicing elit sedo
-                                                eiusmod tempor.Incididunt labore et dolore magna aliqua.
-                                                sed ayd minim veniam.</p>
-                                            <div class="apartments-info-list apartments-info-list-color mt-40">
-                                                <ul>
-                                                    <li><label>Total Area</label> <span>2800 Sq. Ft</span></li>
-                                                    <li><label>Bedroom</label> <span>150 Sq. Ft</span></li>
-                                                    <li><label>Bathroom</label> <span>45 Sq. Ft</span></li>
-                                                    <li><label>Belcony/Pets</label> <span>Allowed</span></li>
-                                                    <li><label>Lounge</label> <span>650 Sq. Ft</span></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div> -->
+
                                     <div class="col-lg-12">
                                         <div class="apartments-plan-img">
                                             <img src="img/others/10.png" alt="#">
@@ -2607,25 +1353,7 @@ SLIDER AREA END -->
                         <div class="tab-pane fade active show" id="liton_tab_3_2">
                             <div class="ltn__product-tab-content-inner">
                                 <div class="row">
-                                    <!-- <div class="col-lg-6">
-                                        <div
-                                            class="apartments-plan-info ltn__secondary-bg--- section-bg-1 text-color-white---">
-                                            <h2>Deluxe Portion</h2>
-                                            <p>Enimad minim veniam quis nostrud exercitation ullamco laboris.
-                                                Lorem ipsum dolor sit amet cons aetetur adipisicing elit sedo
-                                                eiusmod tempor.Incididunt labore et dolore magna aliqua.
-                                                sed ayd minim veniam.</p>
-                                            <div class="apartments-info-list apartments-info-list-color mt-40">
-                                                <ul>
-                                                    <li><label>Total Area</label> <span>2800 Sq. Ft</span></li>
-                                                    <li><label>Bedroom</label> <span>150 Sq. Ft</span></li>
-                                                    <li><label>Bathroom</label> <span>45 Sq. Ft</span></li>
-                                                    <li><label>Belcony/Pets</label> <span>Allowed</span></li>
-                                                    <li><label>Lounge</label> <span>650 Sq. Ft</span></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div> -->
+
                                     <div class="col-lg-12">
                                         <div class="apartments-plan-img">
                                             <img src="img/others/11.png" alt="#">
@@ -2784,22 +1512,6 @@ SLIDER AREA END -->
         <!-- <div id="gmap"></div> -->
     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <!-- CALL TO ACTION START (call-to-action-6) -->
     <div class="ltn__call-to-action-area call-to-action-6 before-bg-bottom pt-70 pb-70" data-bs-bg="img/1.jpg--">
         <div class="container">
@@ -2812,61 +1524,44 @@ SLIDER AREA END -->
                             <h1>Déjanos tu mensaje</h1>
                             <h6>Un asesor se pondrá en contacto a la brevedad.</h6>
                         </div>
-                        <form id="contact-form" action="mail.php" method="post">
+                        <div id="form-message-3" style="color: red; margin-bottom: 1em;"></div>
+                        <form id="lead-form-3">
+                            <input type="hidden" name="oid" value="00Do0000000b6Io">
+                            <input type="hidden" name="captcha_settings"
+                                value='{"keyname":"CAPCHA_GENERICO2025","fallback":"true","orgId":"00Do0000000b6Io","ts":""}'>
+
 
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="input-item input-item-name ltn__custom-icon">
-                                        <input type="text" name="name" placeholder="Nombre">
+                                        <input id="first_name" type="text" name="first_name" placeholder="Nombre">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="input-item input-item-name ltn__custom-icon">
-                                        <input type="text" name="apellidoPaterno" placeholder="Apellido Paterno">
+                                        <input type="text" maxlength="40" id="middle_name" name="middle_name"
+                                            placeholder="Apellido Paterno">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="input-item input-item-name ltn__custom-icon">
-                                        <input type="text" name="apellidoMaterno" placeholder="Apellido Materno">
+                                        <input id="last_name" name="last_name" type="text" required
+                                            placeholder="Apellido Materno">
+
+                                        <!-- <input id="last_name" name="last_name" type="text" required> -->
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="input-item input-item-email ltn__custom-icon">
-                                        <input type="email" name="email" placeholder="Email">
+                                        <input id="email" name="email" type="email" placeholder="Email">
+                                        <!-- <input id="email" name="email" type="email" required><br> -->
                                     </div>
-                                    <!-- <div class="input-item">
-                                                    <select class="nice-select" style="display: none;">
-                                                        <option>Select Service Type</option>
-                                                        <option>Property Management </option>
-                                                        <option>Mortgage Service </option>
-                                                        <option>Consulting Service</option>
-                                                        <option>Home Buying</option>
-                                                        <option>Home Selling</option>
-                                                        <option>Escrow Services</option>
-                                                    </select>
-                                                    <div class="nice-select" tabindex="0"><span class="current">Select
-                                                            Service Type</span>
-                                                        <ul class="list">
-                                                            <li data-value="Select Service Type"
-                                                                class="option selected">Select Service Type</li>
-                                                            <li data-value="Property Management" class="option">Property
-                                                                Management </li>
-                                                            <li data-value="Mortgage Service" class="option">Mortgage
-                                                                Service </li>
-                                                            <li data-value="Consulting Service" class="option">
-                                                                Consulting Service</li>
-                                                            <li data-value="Home Buying" class="option">Home Buying</li>
-                                                            <li data-value="Home Selling" class="option">Home Selling
-                                                            </li>
-                                                            <li data-value="Escrow Services" class="option">Escrow
-                                                                Services</li>
-                                                        </ul>
-                                                    </div>
-                                                </div> -->
+
                                 </div>
                                 <div class="col-md-6">
                                     <div class="input-item input-item-phone ltn__custom-icon">
-                                        <input type="text" name="phone" placeholder="Teléfono">
+                                        <input id="phone" name="phone" type="text" required placeholder="Teléfono">
+                                        <!-- <input id="phone" name="phone" type="text" required><br> -->
                                     </div>
                                 </div>
                             </div>
@@ -2877,10 +1572,19 @@ SLIDER AREA END -->
                                     Acepto Políticas de Privacidad
                                 </label>
                             </div>
-                            <div class="mt-4">
-                                <div class="g-recaptcha" data-sitekey="6LeYyF4rAAAAAHybD_FuW3g0NiJJwUX7_VnfiJLv"></div>
-                                <br>
-                            </div>
+
+                            <input type="hidden" name="00N3l00000Q7A54" value="ALTAI">
+                            <select type="hidden" id="00N3l00000Q7A4n" name="00N3l00000Q7A4n" title="Canal de Venta">
+                                <option selected value="Medios Digitales">Medios Digitales</option>
+                            </select>
+
+                            <select type="hidden" id="00N3l00000Q7A5S" name="00N3l00000Q7A5S" title="Subcanal de Venta">
+                                <option selected value="Micrositios">Micrositios</option>
+                            </select>
+                            <input type="hidden" name="00N3l00000Q7A57" value="Landing_QuintanaRoo">
+                            <input type="hidden" name="00N3l00000Q7A4k" value="Información">
+
+                            <div id="recaptcha-3"></div>
                             <div class="btn-wrapper mt-0">
                                 <button class="btn theme-btn-2 btn-effect-1 text-uppercase w-100"
                                     type="submit">solicitar
@@ -2943,8 +1647,8 @@ SLIDER AREA END -->
 
 
                                 <div class="row">
-                                    <div id="form-message" style="color: red; margin-bottom: 1em;"></div>
-                                    <form id="lead-form">
+                                    <div id="form-message-2" style="color: red; margin-bottom: 1em;"></div>
+                                    <form id="lead-form-2">
                                         <input type="hidden" name="oid" value="00Do0000000b6Io">
                                         <input type="hidden" name="captcha_settings"
                                             value='{"keyname":"CAPCHA_GENERICO2025","fallback":"true","orgId":"00Do0000000b6Io","ts":""}'>
@@ -3013,7 +1717,7 @@ SLIDER AREA END -->
                                             <div class="g-recaptcha"
                                                 data-sitekey="6LeYyF4rAAAAAHybD_FuW3g0NiJJwUX7_VnfiJLv"></div><br>
                                         </div> -->
-                                        <div id="recaptcha-1"></div>
+                                        <div id="recaptcha-2"></div>
 
                                         <div class="btn-wrapper mt-0">
                                             <button class="btn theme-btn-1 btn-effect-1 text-uppercase w-100"
@@ -3023,94 +1727,7 @@ SLIDER AREA END -->
 
 
                                     </form>
-                                    <!-- <div class="col-lg-6 col-12">
-                                        <div class="modal-product-img">
-                                            <img src="img/product/4.png" alt="#">
-                                        </div>
-                                    </div> -->
-                                    <!-- <div class="col-lg-6 col-12">
-                                        <div class="modal-product-info">
-                                            <div class="product-ratting">
-                                                <ul>
-                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
-                                                    <li><a href="#"><i class="far fa-star"></i></a></li>
-                                                    <li class="review-total"> <a href="#"> ( 95 Reviews )</a></li>
-                                                </ul>
-                                            </div>
-                                            <h3>3 Rooms Manhattan</h3>
-                                            <div class="product-price">
-                                                <span>$149.00</span>
-                                                <del>$165.00</del>
-                                            </div>
-                                            <div class="modal-product-meta ltn__product-details-menu-1">
-                                                <ul>
-                                                    <li>
-                                                        <strong>Categories:</strong>
-                                                        <span>
-                                                            <a href="#">Parts</a>
-                                                            <a href="#">Car</a>
-                                                            <a href="#">Seat</a>
-                                                            <a href="#">Cover</a>
-                                                        </span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="ltn__product-details-menu-2">
-                                                <ul>
-                                                    <li>
-                                                        <div class="cart-plus-minus">
-                                                            <input type="text" value="02" name="qtybutton"
-                                                                class="cart-plus-minus-box">
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" class="theme-btn-1 btn btn-effect-1"
-                                                            title="Add to Cart" data-bs-toggle="modal"
-                                                            data-bs-target="#add_to_cart_modal">
-                                                            <i class="fas fa-shopping-cart"></i>
-                                                            <span>ADD TO CART</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="ltn__product-details-menu-3">
-                                                <ul>
-                                                    <li>
-                                                        <a href="#" class="" title="Wishlist" data-bs-toggle="modal"
-                                                            data-bs-target="#liton_wishlist_modal">
-                                                            <i class="far fa-heart"></i>
-                                                            <span>Add to Wishlist</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" class="" title="Compare" data-bs-toggle="modal"
-                                                            data-bs-target="#quick_view_modal">
-                                                            <i class="fas fa-exchange-alt"></i>
-                                                            <span>Compare</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <hr>
-                                            <div class="ltn__social-media">
-                                                <ul>
-                                                    <li>Share:</li>
-                                                    <li><a href="#" title="Facebook"><i
-                                                                class="fab fa-facebook-f"></i></a></li>
-                                                    <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-                                                    </li>
-                                                    <li><a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a>
-                                                    </li>
-                                                    <li><a href="#" title="Instagram"><i
-                                                                class="fab fa-instagram"></i></a></li>
 
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -3304,96 +1921,103 @@ SLIDER AREA END -->
         let recaptchaWidgetId;
 
         function onLoadRecaptcha() {
-            recaptchaWidgetId = grecaptcha.render('recaptcha-1', {
+            recaptchaWidgetId = grecaptcha.render('recaptcha-2', {
                 sitekey: '6LeYyF4rAAAAAHybD_FuW3g0NiJJwUX7_VnfiJLv'
             });
         }
 
-        const form = document.getElementById('lead-form');
+        const formIds = ['lead-form-1', 'lead-form-2', 'lead-form-3'];
 
-        // Crear o usar div para mensajes
-        let messageDiv = document.getElementById('form-message');
-        if (!messageDiv) {
-            messageDiv = document.createElement('div');
-            messageDiv.id = 'form-message';
-            form.appendChild(messageDiv);
-        }
+        formIds.forEach((formId) => {
+            const form = document.getElementById(formId);
+            if (!form) return;
 
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            messageDiv.textContent = '';
-            messageDiv.style.color = '';
-
-            const recaptchaToken = grecaptcha.getResponse(recaptchaWidgetId);
-            if (!recaptchaToken) {
-                messageDiv.style.color = 'red';
-                messageDiv.textContent = 'Por favor, completa el reCAPTCHA.';
-                return;
+            let messageDiv = document.getElementById(`form-message-${formId.split('-')[2]}`);
+            if (!messageDiv) {
+                messageDiv = document.createElement('div');
+                messageDiv.id = `form-message-${formId.split('-')[2]}`;
+                form.appendChild(messageDiv);
             }
 
-            const formData = new FormData(form);
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                messageDiv.textContent = '';
+                messageDiv.style.color = '';
 
-            const data = {
-                first_name: formData.get('first_name'),
-                last_name: formData.get('last_name'),
-                phone: formData.get('phone'),
-                email: formData.get('email'),
-                '00N3l00000Q7A54': formData.get('00N3l00000Q7A54'),
-                '00N3l00000Q7A57': formData.get('00N3l00000Q7A57'),
-                '00N3l00000Q7A4k': formData.get('00N3l00000Q7A4k'),
-                aviso: formData.has('aviso'),
-                'g-recaptcha-response': recaptchaToken,
-            };
-
-            try {
-                const response = await fetch('https://back-altai.onrender.com/enviarYDescargar', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data),
-                });
-
-                if (!response.ok) {
-                    const err = await response.json();
+                const recaptchaToken = grecaptcha.getResponse(recaptchaWidgetId);
+                if (!recaptchaToken) {
                     messageDiv.style.color = 'red';
-                    messageDiv.textContent = err.error || 'Error al enviar el formulario.';
+                    messageDiv.textContent = 'Por favor, completa el reCAPTCHA.';
                     return;
                 }
 
-                // Recibimos el PDF como blob
-                const pdfBlob = await response.blob();
+                const formData = new FormData(form);
+                const data = {
+                    first_name: formData.get('first_name'),
+                    last_name: formData.get('last_name'),
+                    phone: formData.get('phone'),
+                    email: formData.get('email'),
+                    '00N3l00000Q7A54': formData.get('00N3l00000Q7A54'),
+                    '00N3l00000Q7A57': formData.get('00N3l00000Q7A57'),
+                    '00N3l00000Q7A4k': formData.get('00N3l00000Q7A4k'),
+                    aviso: formData.has('aviso'),
+                    'g-recaptcha-response': recaptchaToken,
+                };
 
-                // Forzar la descarga del PDF
-                const url = window.URL.createObjectURL(pdfBlob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'brochure.pdf'; // Nombre del archivo descargado
-                document.body.appendChild(a);
-                a.click();
-                a.remove();
-                window.URL.revokeObjectURL(url);
+                const isDescarga = formId === 'lead-form-2';
+                const endpoint = isDescarga
+                    ? 'https://back-altai.onrender.com/enviarYDescargar'
+                    : 'https://back-altai.onrender.com/enviar';
 
-                // Mostrar mensaje de éxito antes de redirigir
-                messageDiv.style.color = 'green';
-                messageDiv.textContent = 'Formulario enviado correctamente. Descargando brochure...';
+                try {
+                    const response = await fetch(endpoint, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data),
+                    });
 
-                // Limpiar form y reset reCAPTCHA
-                form.reset();
-                grecaptcha.reset(recaptchaWidgetId);
+                    if (!response.ok) {
+                        const err = await response.json();
+                        messageDiv.style.color = 'red';
+                        messageDiv.textContent = err.error || 'Error al enviar el formulario.';
+                        return;
+                    }
 
-                // Esperar un momento (ej. 1.5 segundos) para que el usuario vea el mensaje, luego redirigir
-                setTimeout(() => {
-                    window.location.href = 'https://tudestino.com'; // Cambia aquí a la URL donde quieras redirigir
-                }, 1500);
+                    if (isDescarga) {
+                        // Recibir y descargar PDF
+                        const pdfBlob = await response.blob();
+                        const url = window.URL.createObjectURL(pdfBlob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = 'brochure.pdf';
+                        document.body.appendChild(a);
+                        a.click();
+                        a.remove();
+                        window.URL.revokeObjectURL(url);
 
-            } catch (error) {
-                console.error('Error:', error);
-                messageDiv.style.color = 'red';
-                messageDiv.textContent = 'Error de red o del servidor.';
-            }
+                        messageDiv.style.color = 'green';
+                        messageDiv.textContent = 'Formulario enviado correctamente. Descargando brochure...';
+
+                        setTimeout(() => {
+                            window.location.href = 'https://back-altai.onrender.com/brochure.pdf';
+                        }, 3000);
+                    } else {
+                        // Solo mostrar mensaje para formularios sin descarga
+                        messageDiv.style.color = 'green';
+                        messageDiv.textContent = 'Formulario enviado correctamente.';
+                    }
+
+                    form.reset();
+                    grecaptcha.reset(recaptchaWidgetId);
+
+                } catch (error) {
+                    console.error('Error:', error);
+                    messageDiv.style.color = 'red';
+                    messageDiv.textContent = 'Error de red o del servidor.';
+                }
+            });
         });
-
     </script>
-
 
 
 
