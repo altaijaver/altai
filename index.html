@@ -1918,11 +1918,17 @@
     <script src="https://www.google.com/recaptcha/api.js?onload=onLoadRecaptcha&render=explicit" async defer></script>
 
     <script>
-        let recaptchaWidgetId;
+        // Almacenamos los IDs de cada widget por formulario
+        const recaptchaWidgetIds = {};
 
         function onLoadRecaptcha() {
-            recaptchaWidgetId = grecaptcha.render('recaptcha-2', {
-                sitekey: '6LeYyF4rAAAAAHybD_FuW3g0NiJJwUX7_VnfiJLv'
+            ['1', '2', '3'].forEach((num) => {
+                const container = document.getElementById(`recaptcha-${num}`);
+                if (container) {
+                    recaptchaWidgetIds[num] = grecaptcha.render(container, {
+                        sitekey: '6LeYyF4rAAAAAHybD_FuW3g0NiJJwUX7_VnfiJLv'
+                    });
+                }
             });
         }
 
@@ -1932,10 +1938,11 @@
             const form = document.getElementById(formId);
             if (!form) return;
 
-            let messageDiv = document.getElementById(`form-message-${formId.split('-')[2]}`);
+            const formNum = formId.split('-')[2]; // extrae el número del form
+            let messageDiv = document.getElementById(`form-message-${formNum}`);
             if (!messageDiv) {
                 messageDiv = document.createElement('div');
-                messageDiv.id = `form-message-${formId.split('-')[2]}`;
+                messageDiv.id = `form-message-${formNum}`;
                 form.appendChild(messageDiv);
             }
 
@@ -1944,7 +1951,7 @@
                 messageDiv.textContent = '';
                 messageDiv.style.color = '';
 
-                const recaptchaToken = grecaptcha.getResponse(recaptchaWidgetId);
+                const recaptchaToken = grecaptcha.getResponse(recaptchaWidgetIds[formNum]);
                 if (!recaptchaToken) {
                     messageDiv.style.color = 'red';
                     messageDiv.textContent = 'Por favor, completa el reCAPTCHA.';
@@ -1984,7 +1991,6 @@
                     }
 
                     if (isDescarga) {
-                        // Recibir y descargar PDF
                         const pdfBlob = await response.blob();
                         const url = window.URL.createObjectURL(pdfBlob);
                         const a = document.createElement('a');
@@ -2002,13 +2008,12 @@
                             window.location.href = 'https://back-altai.onrender.com/brochure.pdf';
                         }, 3000);
                     } else {
-                        // Solo mostrar mensaje para formularios sin descarga
                         messageDiv.style.color = 'green';
                         messageDiv.textContent = 'Formulario enviado correctamente.';
                     }
 
                     form.reset();
-                    grecaptcha.reset(recaptchaWidgetId);
+                    grecaptcha.reset(recaptchaWidgetIds[formNum]);
 
                 } catch (error) {
                     console.error('Error:', error);
@@ -2018,6 +2023,7 @@
             });
         });
     </script>
+
 
 
 
