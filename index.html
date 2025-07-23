@@ -4,13 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Quarter - Real Estate HTML Template</title>
+    <title>Altai Residencial en Cancún | Casas con alberca, áreas verdes y créditos Infonavit</title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Place favicon.png in the root directory -->
-    <link rel="shortcut icon" href="./img/favicon.icoxx" type="image/x-icon" />
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
     <!-- Font Icons css -->
     <link rel="stylesheet" href="./css/font-icons.css">
     <!-- plugins css -->
@@ -81,11 +81,20 @@
             line-height: 40px;
         }
 
+        @media (max-width: 479px) {
+
+            .btns-maps {
+
+                align-items: center;
+            }
+        }
+
         .btn-google,
         .btn-waze {
             padding: 5px 1rem;
             border-radius: 50px;
             border: solid thin #ccc;
+            max-width: fit-content;
         }
 
         .btn-google {
@@ -616,7 +625,7 @@
                 class="ltn__slide-one-active----- slick-slide-arrow-1----- slick-slide-dots-1----- arrow-white----- ltn__slide-animation-active">
 
                 <!-- HTML5 VIDEO -->
-                <video autoplay="" muted="" loop="" id="myVideo">
+                <video autoplay muted loop playsinline id="myVideo">
                     <source src="./video/portada.mp4" type="video/mp4">
                 </video>
 
@@ -716,11 +725,14 @@
                                             <label class="input-info-save mb-0 d-flex align-items-center">
                                                 <input type="checkbox" class="form-check-input me-2" id="aviso"
                                                     name="aviso">
-                                                Acepto Políticas de Privacidad
+                                                <a href="https://javer.com.mx/avisos-de-privacidad">Acepto Políticas de
+                                                    Privacidad</a>
                                             </label>
                                         </div>
 
                                         <input type="hidden" name="00N3l00000Q7A54" value="ALTAI">
+
+
                                         <select type="hidden" id="00N3l00000Q7A4n" name="00N3l00000Q7A4n"
                                             title="Canal de Venta">
                                             <option selected value="Medios Digitales">Medios Digitales</option>
@@ -730,7 +742,9 @@
                                             title="Subcanal de Venta">
                                             <option selected value="Micrositios">Micrositios</option>
                                         </select>
+
                                         <input type="hidden" name="00N3l00000Q7A57" value="Landing_QuintanaRoo">
+
                                         <input type="hidden" name="00N3l00000Q7A4k" value="Información">
 
                                         <div id="recaptcha-1"></div>
@@ -1582,7 +1596,8 @@
                             <div class="d-flex row">
                                 <label class="input-info-save mb-0 d-flex align-items-center">
                                     <input type="checkbox" class="form-check-input me-2" id="aviso" name="aviso">
-                                    Acepto Políticas de Privacidad
+                                    <a href="https://javer.com.mx/avisos-de-privacidad">Acepto Políticas de
+                                        Privacidad</a>
                                 </label>
                             </div>
 
@@ -1632,7 +1647,7 @@
                     <div class="col-md-6 col-12 align-self-center">
                         <div class="ltn__copyright-menu text-end">
                             <ul>
-                                <li><a href="#">Aviso de privacidad</a></li>
+                                <li><a href="https://javer.com.mx/avisos-de-privacidad">Aviso de privacidad</a></li>
 
                             </ul>
                         </div>
@@ -1709,7 +1724,8 @@
                                             <label class=" d-flex align-items-center">
                                                 <input type="checkbox" class="form-check-input me-2" id="aviso"
                                                     name="aviso">
-                                                Acepto Políticas de Privacidad
+                                                <a href="https://javer.com.mx/avisos-de-privacidad">Acepto Políticas de
+                                                    Privacidad</a>
                                             </label>
                                         </div>
 
@@ -1974,12 +1990,14 @@
                 const formData = new FormData(form);
                 const data = {
                     first_name: formData.get('first_name'),
-                    last_name: formData.get('last_name'),
+                    // last_name: formData.get('last_name'),
                     phone: formData.get('phone'),
                     email: formData.get('email'),
                     '00N3l00000Q7A54': formData.get('00N3l00000Q7A54'),
                     '00N3l00000Q7A57': formData.get('00N3l00000Q7A57'),
                     '00N3l00000Q7A4k': formData.get('00N3l00000Q7A4k'),
+                    '00N3l00000Q7A4n': formData.get('00N3l00000Q7A4n'),
+                    '00N3l00000Q7A5S': formData.get('00N3l00000Q7A5S'),
                     aviso: formData.has('aviso'),
                     'g-recaptcha-response': recaptchaToken,
                 };
