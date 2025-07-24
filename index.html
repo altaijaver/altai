@@ -2256,12 +2256,12 @@
 
                     // ✅ Analytics por formulario
                     if (window.gtag) {
-                        gtag('event', 'form_submit', {
-                            event_category: 'Formulario',
-                            event_label: formId,
-                            form_origen: formId
+                        gtag('event', 'altai_form_submit', {   // evento único para Altai
+                            form_name: `altai_${formId}`,      // parámetro legible para diferenciar formularios
+                            form_origen: formId                 // si quieres mantener este para backend o más detalle
                         });
                     }
+
 
                     form.reset();
                     grecaptcha.reset(recaptchaWidgetIds[formNum]);
