@@ -5,8 +5,9 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Altai Residencial en Cancún | Casas con alberca, áreas verdes y créditos Infonavit</title>
-    <meta name="robots" content="noindex, follow" />
-    <meta name="description" content="">
+    <!-- <meta name="robots" content="noindex, follow" /> -->
+    <meta name="description"
+        content="Vive sobre la Av. Huayacan con Altai. Un residencial de lujo en el corazón del Caribe, lleno de la naturaleza para que tu y tu familia crezcan cerca del hermoso mar que Cancún te ofrece.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Place favicon.png in the root directory -->
@@ -401,7 +402,46 @@
                 width: 100% !important;
             }
         }
+
+        .float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 8px #00000052;
+            z-index: 100;
+        }
+
+        a.float:hover,
+        a.float:active,
+        a.float:focus {
+            color: #fff;
+            background: #0eaf4a;
+        }
+
+        .my-float {
+            margin-top: 16px;
+        }
     </style>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-38D897N597"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-38D897N597', {
+            'linker': {
+                'domains': ['javer.com.mx', 'altaijaver.mx']
+            }
+        });
+    </script>
 </head>
 
 <body>
@@ -1886,6 +1926,12 @@
         <button id="close-panel" title="Cerrar panel">&times;</button>
         <img src="./img/promo/promo.jpg" alt="Imagen informativa">
     </div>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <a href="https://wa.me/524422479612?text=Hola%2C%20estoy%20interesado%20en%20Altai%20Residencial.%20%C2%BFMe%20puedes%20dar%20m%C3%A1s%20informaci%C3%B3n%3F"
+        class="float" target="_blank">
+        <i class="fa fa-whatsapp my-float"></i>
+    </a>
 
     <!-- All JS Plugins -->
     <script src="./js/plugins.js"></script>
