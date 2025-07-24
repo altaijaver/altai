@@ -728,7 +728,7 @@
                                             <div class="col-md-12">
                                                 <div class="input-item input-item-name ltn__custom-icon">
                                                     <input id="first_name" type="text" name="first_name"
-                                                        placeholder="Nombre">
+                                                        placeholder="Nombre" required>
                                                 </div>
                                             </div>
                                             <!-- <div class="col-md-6">
@@ -747,7 +747,8 @@
                                             </div> -->
                                             <div class="col-md-6">
                                                 <div class="input-item input-item-email ltn__custom-icon">
-                                                    <input id="email" name="email" type="email" placeholder="Email">
+                                                    <input id="email" name="email" type="email" placeholder="Email"
+                                                        required>
                                                     <!-- <input id="email" name="email" type="email" required><br> -->
                                                 </div>
 
@@ -1601,7 +1602,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="input-item input-item-name ltn__custom-icon">
-                                        <input id="first_name" type="text" name="first_name" placeholder="Nombre">
+                                        <input id="first_name" type="text" name="first_name" placeholder="Nombre"
+                                            required>
                                     </div>
                                 </div>
                                 <!-- <div class="col-md-6">
@@ -1620,7 +1622,7 @@
                                 </div> -->
                                 <div class="col-md-6">
                                     <div class="input-item input-item-email ltn__custom-icon">
-                                        <input id="email" name="email" type="email" placeholder="Email">
+                                        <input id="email" name="email" type="email" placeholder="Email" required>
                                         <!-- <input id="email" name="email" type="email" required><br> -->
                                     </div>
 
@@ -1727,7 +1729,7 @@
                                             <div class="col-md-12">
                                                 <div class="input-item input-item-name ltn__custom-icon">
                                                     <input id="first_name" type="text" name="first_name"
-                                                        placeholder="Nombre">
+                                                        placeholder="Nombre" required>
                                                 </div>
                                             </div>
                                             <!-- <div class="col-md-6">
@@ -1746,7 +1748,8 @@
                                             </div> -->
                                             <div class="col-md-6">
                                                 <div class="input-item input-item-email ltn__custom-icon">
-                                                    <input id="email" name="email" type="email" placeholder="Email">
+                                                    <input id="email" name="email" type="email" placeholder="Email"
+                                                        required>
                                                     <!-- <input id="email" name="email" type="email" required><br> -->
                                                 </div>
 
@@ -1992,7 +1995,7 @@
 
     <script src="https://www.google.com/recaptcha/api.js?onload=onLoadRecaptcha&render=explicit" async defer></script>
 
-    <script>
+    <!-- <script>
         // Almacenamos los IDs de cada widget por formulario
         const recaptchaWidgetIds = {};
 
@@ -2099,7 +2102,167 @@
                 }
             });
         });
+    </script> -->
+
+    <script>
+        const recaptchaWidgetIds = {};
+
+        function onLoadRecaptcha() {
+            ['1', '2', '3'].forEach((num) => {
+                const container = document.getElementById(`recaptcha-${num}`);
+                if (container) {
+                    recaptchaWidgetIds[num] = grecaptcha.render(container, {
+                        sitekey: '6LeYyF4rAAAAAHybD_FuW3g0NiJJwUX7_VnfiJLv'
+                    });
+                    container.setAttribute('data-widget-id', recaptchaWidgetIds[num]);
+                }
+            });
+        }
+
+        const formIds = ['lead-form-1', 'lead-form-2', 'lead-form-3'];
+
+        formIds.forEach((formId) => {
+            const form = document.getElementById(formId);
+            if (!form) return;
+
+            const formNum = formId.split('-')[2];
+            let messageDiv = document.getElementById(`form-message-${formNum}`);
+            if (!messageDiv) {
+                messageDiv = document.createElement('div');
+                messageDiv.id = `form-message-${formNum}`;
+                form.appendChild(messageDiv);
+            }
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                messageDiv.textContent = '';
+                messageDiv.classList.remove('alert', 'alert-danger', 'alert-success');
+
+                const recaptchaToken = grecaptcha.getResponse(recaptchaWidgetIds[formNum]);
+                if (!recaptchaToken) {
+                    messageDiv.classList.add('alert', 'alert-danger');
+                    messageDiv.textContent = 'Por favor, completa el reCAPTCHA.';
+                    return;
+                }
+
+                const formData = new FormData(form);
+
+                const first_name = formData.get('first_name')?.trim() || '';
+                const email = formData.get('email')?.trim() || '';
+                const phone = formData.get('phone')?.trim() || '';
+                const aviso = formData.has('aviso');
+
+                // Validaciones front extra
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                const phoneRegex = /^[0-9]{8,10}$/;
+                const nameRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{4,}$/;
+
+                if (!nameRegex.test(first_name)) {
+                    messageDiv.classList.add('alert', 'alert-danger');
+                    messageDiv.textContent = 'Nombre inválido. Usa solo letras y al menos 4 caracteres.';
+                    return;
+                }
+
+                if (!first_name || !email || !phone) {
+                    messageDiv.classList.add('alert', 'alert-danger');
+                    messageDiv.textContent = 'Todos los campos son obligatorios.';
+                    return;
+                }
+
+                if (!emailRegex.test(email)) {
+                    messageDiv.classList.add('alert', 'alert-danger');
+                    messageDiv.textContent = 'Correo electrónico no válido.';
+                    return;
+                }
+
+                if (!phoneRegex.test(phone)) {
+                    messageDiv.classList.add('alert', 'alert-danger');
+                    messageDiv.textContent = 'Teléfono no válido (solo números de 7 a 15 dígitos).';
+                    return;
+                }
+
+                if (!aviso) {
+                    messageDiv.classList.add('alert', 'alert-danger');
+                    messageDiv.textContent = 'Debes aceptar el aviso de privacidad.';
+                    return;
+                }
+
+                const data = {
+                    first_name,
+                    email,
+                    phone,
+                    aviso,
+                    '00N3l00000Q7A54': formData.get('00N3l00000Q7A54'),
+                    '00N3l00000Q7A57': formData.get('00N3l00000Q7A57'),
+                    '00N3l00000Q7A4k': formData.get('00N3l00000Q7A4k'),
+                    '00N3l00000Q7A4n': formData.get('00N3l00000Q7A4n'),
+                    '00N3l00000Q7A5S': formData.get('00N3l00000Q7A5S'),
+                    'g-recaptcha-response': recaptchaToken,
+                    form_origen: formId // ✅ para backend y analytics
+                };
+
+                const isDescarga = formId === 'lead-form-2';
+                const endpoint = isDescarga
+                    ? 'https://back-altai.onrender.com/enviarYDescargar'
+                    : 'https://back-altai.onrender.com/enviar';
+
+                try {
+                    const response = await fetch(endpoint, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data),
+                    });
+
+                    if (!response.ok) {
+                        const err = await response.json();
+                        messageDiv.classList.add('alert', 'alert-danger');
+                        messageDiv.textContent = err.error || 'Error al enviar el formulario.';
+                        return;
+                    }
+
+                    if (isDescarga) {
+                        const pdfBlob = await response.blob();
+                        const url = window.URL.createObjectURL(pdfBlob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = 'brochure.pdf';
+                        document.body.appendChild(a);
+                        a.click();
+                        a.remove();
+                        window.URL.revokeObjectURL(url);
+
+                        messageDiv.classList.add('alert', 'alert-success');
+                        messageDiv.textContent = 'Formulario enviado correctamente. Descargando brochure...';
+
+                        setTimeout(() => {
+                            window.location.href = 'https://back-altai.onrender.com/brochure.pdf';
+                        }, 3000);
+                    } else {
+                        messageDiv.classList.add('alert', 'alert-success');
+                        messageDiv.textContent = 'Formulario enviado correctamente.';
+                    }
+
+                    // ✅ Analytics por formulario
+                    if (window.gtag) {
+                        gtag('event', 'form_submit', {
+                            event_category: 'Formulario',
+                            event_label: formId,
+                            form_origen: formId
+                        });
+                    }
+
+                    form.reset();
+                    grecaptcha.reset(recaptchaWidgetIds[formNum]);
+
+                } catch (error) {
+                    console.error('Error:', error);
+                    messageDiv.classList.add('alert', 'alert-danger');
+                    messageDiv.textContent = 'Error de red o del servidor.';
+                }
+            });
+        });
     </script>
+
 
 
 
