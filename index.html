@@ -2005,7 +2005,7 @@
     </script>
 
 
-    <script src="https://www.google.com/recaptcha/api.js?onload=onLoadRecaptcha&render=explicit" async defer></script>
+
 
     <!-- <script>
         // Almacenamos los IDs de cada widget por formulario
@@ -2115,7 +2115,7 @@
             });
         });
     </script> -->
-
+    <script src="https://www.google.com/recaptcha/api.js?onload=onLoadRecaptcha&render=explicit" async defer></script>
     <script>
         const recaptchaWidgetIds = {};
 
@@ -2255,12 +2255,19 @@
                     }
 
                     // ✅ Analytics por formulario
-                    if (window.gtag) {
-                        gtag('event', 'altai_form_submit', {   // evento único para Altai
-                            form_name: `altai_${formId}`,      // parámetro legible para diferenciar formularios
-                            form_origen: formId                 // si quieres mantener este para backend o más detalle
-                        });
-                    }
+                    // if (window.gtag) {
+                    //     gtag('event', 'altai_form_submit', {   // evento único para Altai
+                    //         form_name: `altai_${formId}`,      // parámetro legible para diferenciar formularios
+                    //         form_origen: formId                 // si quieres mantener este para backend o más detalle
+                    //     });
+                    // }
+
+                    window.dataLayer = window.dataLayer || [];
+                    window.dataLayer.push({
+                        event: 'altai_form_submit',
+                        form_name: `altai_${formId}`,
+                        form_origen: formId
+                    });
 
 
                     form.reset();
