@@ -2157,6 +2157,7 @@
     <script src="https://www.google.com/recaptcha/api.js?onload=onLoadRecaptcha&render=explicit" async defer></script>
     <script>
         const recaptchaWidgetIds = {};
+        const formIds = ['lead-form-1', 'lead-form-2', 'lead-form-3'];
 
         function onLoadRecaptcha() {
             ['1', '2', '3'].forEach((num) => {
@@ -2170,7 +2171,12 @@
             });
         }
 
-        const formIds = ['lead-form-1', 'lead-form-2', 'lead-form-3'];
+
+
+        function getGclidFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('gclid') || '';
+        }
 
         formIds.forEach((formId) => {
             const form = document.getElementById(formId);
@@ -2305,7 +2311,8 @@
                     window.dataLayer.push({
                         event: 'altai_form_submit',
                         form_name: `altai_${formId}`,
-                        form_origen: formId
+                        form_origen: formId,
+                        gclid: getGclidFromUrl()
                     });
 
 
